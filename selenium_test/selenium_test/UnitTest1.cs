@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.IE;
@@ -11,27 +13,36 @@ namespace selenium_test
     [TestClass]
     public class UnitTest1
     {
-        private string baseURL = "http://www.google.com/";
+        private string baseURL = "https://www.netflix.com/in/";
         private RemoteWebDriver driver;
         private string browser = string.Empty;
         public TestContext TestContext { get; set; }
-
+        string tagName;
         [TestMethod]
         [TestCategory("Selenium")]
         [Priority(1)]
-        [Owner("FireFox")]
+        [Owner("Shaad")]
         public void TestMethod1()
         {
             driver.Manage().Window.Maximize();
             driver.Manage().Timeouts().ImplicitlyWait(TimeSpan.FromSeconds(30));
             driver.Navigate().GoToUrl(this.baseURL);
-
+            tagName = driver.FindElement(By.ClassName("cta-pitch")).Text;
+            Assert.IsTrue(tagName.Contains("Post published1."), tagName + " doesn't contains 'Post published1.'");
             //do other Selenium things here!
+            //write(tagName);
+         //   Console.WriteLine(tagName);
+        }
+
+        private void write(string tagName)
+        {
+            Console.WriteLine(tagName);
         }
 
         [TestCleanup()]
         public void MyTestCleanup()
         {
+            File.WriteAllText(Environment.CurrentDirectory+@"\result.txt", tagName);
             driver.Quit();
         }
 
@@ -64,7 +75,7 @@ namespace selenium_test
             }
             else
             {
-                this.baseURL = "http://www.google.com/"; //default URL just to get started with
+                this.baseURL = "https://www.netflix.com/in/"; //default URL just to get started with
             }
         }
     }
