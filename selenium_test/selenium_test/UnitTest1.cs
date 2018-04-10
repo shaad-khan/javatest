@@ -60,9 +60,9 @@ namespace selenium_test
             driver.FindElement(By.XPath("//*[@id='save']")).Click();
             Thread.Sleep(2000);
             driver.FindElement(By.XPath("//*[@id='save']")).Click();
-            Thread.Sleep(6000);
+            Thread.Sleep(7000);
             driver.FindElement(By.XPath("/html/body/section/nav-bar/nav/ul/li[3]/div/a")).Click();
-            Thread.Sleep(2000);
+            Thread.Sleep(4000);
             driver.FindElement(By.XPath("/html/body/section/div/router-view/section/div[1]/ul/li[2]/a")).Click();
             var query = driver.FindElements(By.XPath("/html/body/section/div/router-view/section/div[2]/router-view/div[1]/ul"));
             foreach (var element in query)
