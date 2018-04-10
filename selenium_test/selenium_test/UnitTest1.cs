@@ -77,7 +77,7 @@ namespace selenium_test
                 }
                 else if (element.Text.Contains("Partner"))
                 {
-                    Assert.Fail("Having Access to Partener link");
+                    Assert.Fail("Having Access to Partner link");
 
                 }
 
@@ -86,6 +86,7 @@ namespace selenium_test
             {
                 Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
                 ss.SaveAsFile(Environment.CurrentDirectory + @"/screenshot/ss.png", System.Drawing.Imaging.ImageFormat.Png);
+                this.TestContext.AddResultFile(Environment.CurrentDirectory + @"/screenshot/ss.png");
             }
             catch(Exception ex)
             {
