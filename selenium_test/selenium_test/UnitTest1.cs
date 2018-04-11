@@ -85,8 +85,8 @@ namespace selenium_test
             try
             {
                 Screenshot ss = ((ITakesScreenshot)driver).GetScreenshot();
-                ss.SaveAsFile(Environment.CurrentDirectory + @"/screenshot/ss.jpeg", System.Drawing.Imaging.ImageFormat.Jpeg);
-                this.TestContext.AddResultFile(Environment.CurrentDirectory + @"/screenshot/ss.jpeg");
+                ss.SaveAsFile(Environment.CurrentDirectory + @"/screenshot/ss.png", System.Drawing.Imaging.ImageFormat.Png);
+                this.TestContext.AddResultFile(Environment.CurrentDirectory + @"/screenshot/ss.png");
               
 
             }
